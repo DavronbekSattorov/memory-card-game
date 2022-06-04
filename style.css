@@ -11,23 +11,22 @@ h1 {
 
 .container {
     height: 100vh;
-    width: 60%;
-    margin: auto;
     text-align: center;
 }
 
 .cards {
-    width: 70%;
+    width: 40%;
     margin: auto;
     height: 600px;
     display: flex;
     justify-content: space-evenly;
     flex-wrap: wrap;
+    border-radius: 10px;
+    padding: 10px;
 }
 
 .cards p {
     width: 22%;
-    border: 1px solid rgb(173, 173, 173);
     border-radius: 10px;
     display: flex;
     justify-content: center;
@@ -37,5 +36,25 @@ h1 {
     font-size: 30px;
     font-weight: bolder;
     margin: 5px;
+    background-color: white;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+    cursor: pointer;
 }
 
+
+@media only screen and (max-width: 900px) {
+      .cards {
+        width: 70%;
+    }
+    
+
+  }
+
+  @media only screen and (max-width: 600px) {
+    .cards {
+      width: 85%;
+  }
+  
+
+}
+ 

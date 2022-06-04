@@ -114,30 +114,36 @@ const createElements = () => {
 
         cards.appendChild(newElement);
         if(el.found) {
-            newElement.style.color = 'grey';
+            newElement.style.color = 'black';
         }
     })
+    
 }
 createElements();
+
 
 let temArr = [];
 
 document.addEventListener('click', (e) => {
     arr = arr.map(el => el.id === Number(e.target.id) ? {...el,found : true} : el);
     
+    let getEl = arr.filter(el => el.id === Number(e.target.id));
+    temArr.push(...getEl);
+    console.log(temArr)
     cards.innerHTML = '';
     createElements()
-  
-   
-    if(temArr.length && temArr[0].char === e.target.innerHTML) {
-        arr = arr.map(el => el.char === e.target.innerHTML ? {...el, found :true} : el);
+
+    if(temArr.length === 2 && temArr[0].char === temArr[1].char) {
+        console.log('it is equal', )
         temArr = [];
-    } else if(temArr.length && temArr[0].char !== e.target.innerHTML) {
-        arr = arr.map(el => el.char === e.target.innerHTML ? {...el, found : false} : el);
-        temArr = []
-    } else{
+    } else if(temArr.length === 2 && temArr[0].char !== temArr[1].char) {
+        arr = arr.map(el => el.char === temArr[0].char || el.char === temArr[1].char ?
+            {...el,found : false} : el );
 
+            setTimeout(()=> {
+                cards.innerHTML = '';
+                createElements()
+            },1000)
+        temArr = [];
     }
-    temArr = arr.filter(el => el.id === Number(e.target.id));   
 });
-
